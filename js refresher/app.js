@@ -3,15 +3,21 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const expressHbs = require('express-handlebars');
+// const expressHbs = require('express-handlebars');
 
 const app = express();
 
 // declaring engine with handlebars it can be anything
-app.engine('handlebars', expressHbs({layoutsDir:'views/layouts', defaultLayout: 'main-layout'}));
+// app.engine('handlebars', expressHbs({layoutsDir:'views/layouts', defaultLayout: 'main-layout'}));
 
- app.set('view engine','handlebars');
+// setting handle bars
+//app.set('view engine','handlebars');
+
+//setting pug
 //app.set('view engine','pug');
+
+//setting pug
+app.set('view engine','ejs');
 app.set('views','views');
 
 
