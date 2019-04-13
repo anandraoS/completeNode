@@ -4,7 +4,7 @@ exports.getAddProduct = (req, res, next) => {
   res.render('admin/edit-product', {
     pageTitle: 'Add Product',
     path: '/admin/add-product',
-    editing: false  
+    editing: false
   });
 };
 
@@ -24,10 +24,10 @@ exports.getEditProduct = (req, res, next) => {
     return res.redirect('/');
   }
   const productId = req.params.productId;
-  Product.findById(productId , product =>{
+  Product.findById(productId, product => {
     // if product is not found we are redirecting into shop
-    if(!product)
-    return res.redirect('/')
+    if (!product)
+      return res.redirect('/')
     res.render('admin/edit-product', {
       pageTitle: 'Edut Product',
       path: '/admin/edit-product',
@@ -35,7 +35,11 @@ exports.getEditProduct = (req, res, next) => {
       product: product
     });
   });
-  
+
+};
+
+exports.postAddProduct = (req, res, next) => {
+
 };
 
 exports.getProducts = (req, res, next) => {
