@@ -7,9 +7,10 @@ const errorController = require('./controllers/error');
 
 const app = express();
 
+const Sequelize = require('sequelize');
 // const db= require('./util/db');
 
-
+const sequelize = require('./util/db');
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
@@ -26,4 +27,10 @@ app.use(shopRoutes);
 
 app.use(errorController.get404);
 
-app.listen(3000);
+sequelize.sync().then(result=>{
+    //console.log(result);
+    app.listen(3000);
+}).catch(err=>{
+    console.log(err);
+});
+
