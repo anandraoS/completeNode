@@ -20,7 +20,7 @@ module.exports = class Product {
   static deleteById() {
   }
 
-  static fetchAll(cb) {
+  static fetchAll() {
     return db.execute('select * from products');
   }
 
