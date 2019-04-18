@@ -9,18 +9,17 @@ exports.getAddProduct = (req, res, next) => {
 };
 
 exports.postAddProduct = (req, res, next) => {
-  console.log('here we are printing the user object');
-  console.log(req.user);
   const title = req.body.title;
   const imageUrl = req.body.imageUrl;
   const price = req.body.price;
   const description = req.body.description;
+  console.log(req.user.id);
   Product.create({
     title: title,
     price: price,
     imageUrl: imageUrl,
     description: description,
-    userId : req.user.id
+    userId: req.user.id
   })
     .then(result => {
       // console.log(result);
