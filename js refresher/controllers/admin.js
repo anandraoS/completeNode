@@ -9,6 +9,8 @@ exports.getAddProduct = (req, res, next) => {
 };
 
 exports.postAddProduct = (req, res, next) => {
+  console.log('here we are printing the user object');
+  console.log(req.user);
   const title = req.body.title;
   const imageUrl = req.body.imageUrl;
   const price = req.body.price;
@@ -17,7 +19,8 @@ exports.postAddProduct = (req, res, next) => {
     title: title,
     price: price,
     imageUrl: imageUrl,
-    description: description
+    description: description,
+    userId : req.user.id
   })
     .then(result => {
       // console.log(result);
@@ -35,7 +38,7 @@ exports.getEditProduct = (req, res, next) => {
     return res.redirect('/');
   }
   const prodId = req.params.productId;
-  Product.findById(prodId)
+  Product.findByPk(prodId)
     .then(product => {
       if (!product) {
         return res.redirect('/');
@@ -56,7 +59,7 @@ exports.postEditProduct = (req, res, next) => {
   const updatedPrice = req.body.price;
   const updatedImageUrl = req.body.imageUrl;
   const updatedDesc = req.body.description;
-  Product.findById(prodId)
+  Product.findByPk(prodId)
     .then(product => {
       product.title = updatedTitle;
       product.price = updatedPrice;
@@ -85,7 +88,7 @@ exports.getProducts = (req, res, next) => {
 
 exports.postDeleteProduct = (req, res, next) => {
   const prodId = req.body.productId;
-  Product.findById(prodId)
+  Product.findByPk(prodId)
     .then(product => {
       return product.destroy();
     })
