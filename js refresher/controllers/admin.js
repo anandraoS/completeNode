@@ -14,12 +14,12 @@ exports.postAddProduct = (req, res, next) => {
   const price = req.body.price;
   const description = req.body.description;
   console.log(req.user.id);
-  Product.create({
+  req.user.createProduct({
     title: title,
     price: price,
     imageUrl: imageUrl,
-    description: description,
-    userId: req.user.id
+    description: description
+   // userId: req.user.id
   })
     .then(result => {
       // console.log(result);
