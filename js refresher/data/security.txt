@@ -1,3 +1,3 @@
-mongodb cluster password: JwLCKyVrJVsmW0cX
+mongodb cluster password: aJwLCKyVrJVsmW0cXc
 
 mongodb+srv://anand:<password>@anand-y69lt.mongodb.net/test?retryWrites=true
